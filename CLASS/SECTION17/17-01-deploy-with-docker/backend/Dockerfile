@@ -25,7 +25,7 @@ COPY . /myfolder/
 
 # 도커 내부에서 파일 실행
 # RUN node index.js
-CMD yarn start:dev
+CMD CMD yarn start:dev
 
 # 도커 실행하기
 # docker build .
