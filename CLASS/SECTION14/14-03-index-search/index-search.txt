@@ -1,0 +1,50 @@
+# 데이터 전체 갯수 조회
+select COUNT(*) from board 
+;
+
+# 쿼리 검색 속도 비교
+select * 
+	from board 
+	where title = '0.0636004349809144'
+;
+
+select * 
+	from board 
+	where number = 12
+;
+
+# 옵티마이저의 실행 계획 확인
+explain
+ select * 
+	from board 
+ where title = '0.0636004349809144'
+;
+
+explain
+ select * 
+	from board 
+	where number = 12
+;
+
+
+# 인덱스 확인
+show index from board
+;
+
+#인덱스 생성
+create index idx_title on board(title)
+;
+
+# 옵티마이저로 실행 계획 다시 확인
+explain
+ select * 
+	from board 
+ where title = '0.0636004349809144'
+;
+
+
+# 인뎅싱 된 컬럼으로 재쿼리 후, 성능 비교
+ select * 
+	from board 
+ where title = '0.0636004349809144'
+;

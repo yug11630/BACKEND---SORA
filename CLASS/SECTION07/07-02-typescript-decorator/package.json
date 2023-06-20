@@ -1,0 +1,15 @@
+{
+  "name": "07-02-typescript-decorator",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start" : "ts-node index.ts"
+  },
+  "devDependencies": {
+    "typescript": "^5.1.3"
+  },
+  "dependencies": {
+    "ts-node": "^10.9.1"
+  }
+}

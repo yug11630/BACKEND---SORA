@@ -1,0 +1,47 @@
+# 이 파일 04랑 05 코드가 바꼈으니 참고하길
+
+version: '3.7'
+
+# 하나의 컴퓨터를 하나의 서비스라고 부른다.
+services:
+  # 컴퓨터 이름
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./src:/myfolder/src
+      # - ./src:/myfolder/src
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    ports:
+      - 3000:3000
+    env_file:
+      - ./.env.docker
+
+  # 컴퓨터 이름
+  database:
+    # platform: linux/86_64
+    image: mysql:latest
+    environment:
+      MYSQL_DATABASE: 'mydocker'
+      MYSQL_ROOT_PASSWORD: '1234'
+    ports:
+      - 3306:3306
+
+  # 1. 빌드하기
+  # docker-compose build
+
+  # 2. 실행하기
+  # docker-compose up
+
+  # 3. 종료하기
+  # 컨트롤 + C
+
+  # 4. 도커 컴퓨터 접속하기
+  # docker exec -it 8ed37a0c1d86 /bin/bash
+  # mongo
+  # show databases
+  # use local
+  # show collections
+  # exit

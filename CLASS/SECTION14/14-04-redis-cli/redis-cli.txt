@@ -1,0 +1,17 @@
+CLASS\SECTION14\14-04-redis\backend> docker ps
+CONTAINER ID   IMAGE          COMMAND                   CREATED         STATUS         PORTS                    NAMES
+6c6237e70b24   redis:latest   "docker-entrypoint.s…"   2 minutes ago   Up 2 minutes   0.0.0.0:6379->6379/tcp   backend-my-redis-1                            ^C                                        
+PS C:\Users\tiasi\OneDrive\바탕 화면\BACKEND - SORA\CLASS\SECTION14\14-04-redis\backend> docker exec -it 6c6237e70b24 /bin/bash
+root@6c6237e70b24:/data# redis-cli
+127.0.0.1:6379> keys *
+(empty array)
+127.0.0.1:6379> set qqq apple
+OK
+127.0.0.1:6379> get qqq
+"apple"
+127.0.0.1:6379> ttl qqq
+(integer) -1
+127.0.0.1:6379> expire qqq 20
+(integer) 1
+127.0.0.1:6379> ttl qqq
+(integer) -2

@@ -1,0 +1,63 @@
+show databases
+;
+
+use myproject
+;
+
+show tables
+;
+
+desc product
+;
+
+select * from product
+;
+
+insert into product (id,name,description, price)
+values(uuid(), "마우스", "성능 짱짱 마우스입니다.", 15000);
+
+insert into product (id,name,description, price)
+values(uuid(), "노트북", "최신형 짱짱 노트북입니다.", 20000);
+
+insert into product (id,name,description, price)
+values(uuid(), "셔츠", "신상 셔츠입니다.", 30000);
+
+delete from product where name = '셔츠';
+
+update product 
+set price = 18000
+where name = '마우스';
+
+# 조인
+
+select * from product_saleslocation;
+
+insert into product_saleslocation(id, address, addressDetail, lat, lng, meetingTime)
+values(uuid(), '구로구' ,'구로디지털단지', 37.281723, 127.192387, '2023-01-10');
+
+update product 
+	set productSaleslocationId = 'a1cb0294-075a-11ee-86a2-0c5415552f48' 
+	where name = '마우스';
+	
+select p.id, name, price,address, addressDetail as '상세주소'
+ from product p, product_saleslocation ps 
+ where p.productSaleslocationId  = ps.id;
+ 
+update product 
+	set isSoldout = true 
+where name = '노트북' 
+	and price = 20000;
+	
+update product 
+	set isSoldout = true 
+where name = '노트북' 
+	or price = 20000;
+	
+# 주석 쉽게 다는 법
+
+select *
+	from product 
+where 1 = 1 # 무조건 참인 조건을 달아준다 !셀렉트 문에서만 사용할 것
+	and name = '마우스' 
+	and price = 5000 
+	and isSoldout = false
